@@ -33,9 +33,10 @@ function scheduleScrollAnimation(){
 
 function nextImage(){
 	$.getJSON("http://www.reddit.com/r/foodporn/.json?jsonp=?", function(data) { 
-    	$.each(data.data.children, function(i,item){
-        	$("<img/>").attr("src", item.data.url).appendTo("#images");
-    	});
+    	console.log(data);
+    	// $.each(data.data.children, function(i,item){
+        	$("#image").attr("src", data.data.children[1].data.url);
+    	// });
 	});
 
 }
