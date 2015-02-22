@@ -31,19 +31,24 @@ function scheduleScrollAnimation(){
 }
 
 var index = 0;
+var params = {};
 function nextImage(){
-	$.getJSON("http://www.reddit.com/r/catpictures/.json?jsonp=?", function(data) { 
-    	console.log(data);
-    	// $.each(data.data.children, function(i,item){
-    		if (data.data.children[index].data.url.indexOf(".jpg")==-1){
-    			index = (index+1)%25;
-    			nextImage();
-    		}else{
-	        	$("#image").attr("src", data.data.children[index].data.url);
-	        }
-    	// });
+	$.getJSON("http://www.reddit.com/r/catpictures/.json?jsonp=?", params, function(data) { 
+    	// console.log(data);
+		if (data.data.children[index].data.url.indexOf(".jpg")!=-1){
+        	$("#image").attr("src", data.data.children[index].data.url);
+		}
+		index += 1;
+		if (index == 24){
+			lastId = data.data.children[index].data.id;
+			// console.log(lastId);
+			params = {after: 't3_' + lastId};
+			index = 0;
+		}
+		if (data.data.children[index].data.url.indexOf(".jpg")==-1){
+    		nextImage();
+        }
 	});
-	index = (index+1)%25;
 }
 
 
