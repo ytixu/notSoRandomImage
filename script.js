@@ -1,7 +1,7 @@
 function drawArrow(){
 	var c = document.getElementById("canvas");
 	c.width = 55;
-	c.height = 63;
+	c.height = 83;
 	var ctx = c.getContext("2d");
 	ctx.strokeStyle = '#ffffff';
 	ctx.lineWidth = 5;
@@ -14,21 +14,39 @@ function drawArrow(){
 	ctx.lineTo(50,29);
 	ctx.lineWidth = 8;
 	ctx.stroke();
-	$("#canvas").hide();
+	$("#scroll").hide();
 }
 
-var scheduledScrollerAnimation = null;
-
-function scheduleScollAnimation(){
-	scheduledScrollerAnimation = setTimeout(function(){
-		$("#canvas").fadeIn("slow");
-		$("#canvas").animate({bottom: "-=29px"}, 500, function(){
-				$("#canvas").animate({bottom: "+=29px"}, 500);
+function scheduleScrollAnimation(){
+	$("#scroll").animate({bottom: "-=20px"}, 500, function(){
+		$("#scroll").animate({bottom: "+=20px"}, 500, function(){
+			$("#scroll").animate({bottom: "-=20px"}, 500, function(){
+				$("#scroll").animate({bottom: "+=20px"}, 500, function(){
+					setTimeout(function(){ scheduleScrollAnimation();
+					}, 3000);
+				});
 			});
-	}, 1000);
+		});
+	});	
 }
+
+
+function nextImage(){
+	// TODO
+
+}
+
+
 
 window.onload = function(){
 	drawArrow();
-	scheduleScollAnimation();
+	setTimeout(function(){
+		$("#scroll").fadeIn("slow", function(){
+			scheduleScrollAnimation();
+		});
+	}, 3000);
+	// bind scroll
+	window.addEventListener ("mousewheel", function (event) {
+		nextImage();
+	});
 }
