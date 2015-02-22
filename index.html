@@ -2,18 +2,35 @@
 <head>
 	<title>NotSoRandomImage</title>
 	<style>
+		body{
+			background-color: #47C795;
+			overflow:hidden;
+		}
 		#mainImage{
-			display: table-cell;
-			text-align: center;
 			width: 100%;
 			height: 100%;
+			text-align: center;
+			padding-top: 3%;
 		}
 		#mainImage img{
-			width: 50%;
+			height: 75%;
+		}
+		#scroll{
+			position: absolute;
+			right: 5px;
+			bottom: 34px;
 		}
 	</style>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 </head>
 <body>
-	<div id="mainImage"></div>
+	<div id="mainImage">
+		<img src="http://i.imgur.com/2m46Ax1.jpg">
+		<div id="scroll">
+			<canvas id="canvas"></canvas>
+		</div>
+	</div>
 </body>
+<script src="script.js"></script>
 </html>
