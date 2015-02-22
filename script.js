@@ -30,15 +30,20 @@ function scheduleScrollAnimation(){
 	});	
 }
 
-
+var index = 0;
 function nextImage(){
 	$.getJSON("http://www.reddit.com/r/foodporn/.json?jsonp=?", function(data) { 
     	console.log(data);
     	// $.each(data.data.children, function(i,item){
-        	$("#image").attr("src", data.data.children[1].data.url);
+    		if (data.data.children[index].data.url.indexOf(".jpg")==-1){
+    			index = (index+1)%25;
+    			nextImage();
+    		}else{
+	        	$("#image").attr("src", data.data.children[index].data.url);
+	        }
     	// });
 	});
-
+	index = (index+1)%25;
 }
 
 
