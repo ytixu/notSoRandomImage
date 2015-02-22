@@ -1,9 +1,12 @@
 <html>
 <head>
 	<title>NotSoRandomImage</title>
+	<link href='http://fonts.googleapis.com/css?family=Gloria+Hallelujah' rel='stylesheet' type='text/css'>
 	<style>
 		body{
-			background-color: #47C795;
+			font-family: 'Gloria Hallelujah', cursive;
+			background-image: url("http://wallpoper.com/images/00/30/22/14/unicorns-robot_00302214.jpg");
+			background-size: cover;
 			overflow:hidden;
 		}
 		#mainImage{
@@ -25,6 +28,19 @@
 			border: 7px solid white;
 			border-radius: 20px;
 		}
+		#button{
+			background: #47C795;
+			color: white;
+			margin-top: 7px;
+			height: 40px;
+			font: "consolas" ;
+		}
+		#title2{
+			text-align: left;
+			font-size: 30px;
+			position : absolute;
+			bottom: 0px;
+		}
 	</style>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
@@ -35,7 +51,9 @@
 		<div id="scroll">
 			<canvas id="canvas"></canvas>
 		</div>
-		<input type="button" value="I'm ready" onclick="nextImage()">
+		<br>
+		<input id="button" type="button" value="I'm ready" onclick="nextImage()">
+		<div id="title2">not so random image</div>
 	</div>
 </body>
 <script src="script.js"></script>

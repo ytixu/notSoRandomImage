@@ -32,7 +32,7 @@ function scheduleScrollAnimation(){
 
 var index = 0;
 function nextImage(){
-	$.getJSON("http://www.reddit.com/r/foodporn/.json?jsonp=?", function(data) { 
+	$.getJSON("http://www.reddit.com/r/catpictures/.json?jsonp=?", function(data) { 
     	console.log(data);
     	// $.each(data.data.children, function(i,item){
     		if (data.data.children[index].data.url.indexOf(".jpg")==-1){
